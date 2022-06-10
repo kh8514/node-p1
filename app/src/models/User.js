@@ -5,10 +5,9 @@ class User {
         this.body = body
     }
 
-    login() {
+    async login() {
         const body = this.body
-        const {id, pw } = UserStorage.getUserInfo(body.id)
-
+        const {id,pw} = await UserStorage.getUserInfo(body.id)
         if(id) {
             if(id === body.id && pw === body.pw) {
                 return {success: true}
@@ -16,7 +15,6 @@ class User {
             return { success: false, msg: "패스워드를 확인해주세요"}
         }
         return { success: false, msg: "아이디를 확인해주세요"}
-
     }
 
     register() {
