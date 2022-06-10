@@ -4,7 +4,8 @@
 const express = require("express")
 const bodyParser = require("body-parser")
 const app = express()
-
+const dotenv = require("dotenv")
+dotenv.config()
 
 
 // app setting
@@ -16,9 +17,10 @@ app.use(bodyParser.json())
 // 제대로 인식되지 않는 문제 해결
 app.use(bodyParser.urlencoded({extended: true}))
 
+
 // routing
 const home = require("./src/routes/home")
-
 app.use("/", home)
+
 
 module.exports = app

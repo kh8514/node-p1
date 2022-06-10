@@ -1,15 +1,16 @@
 "use strict"
 
 const mariadb = require('mariadb');
-const vals = require('../config/consts');
 
 class DBConn {
     constructor(query, params) {
         this.query = query
         this.params = params||""
         this.pool = mariadb.createPool({
-            host: vals.DBHost, port:vals.DBPort,
-            user: vals.DBUser, password: vals.DBPass,
+            host: process.env.DB_HOST, 
+            port: process.env.DB_PORT,
+            user: process.env.DB_USER, 
+            password: process.env.DB_PASS,
             connectionLimit: 5
         });
     }
