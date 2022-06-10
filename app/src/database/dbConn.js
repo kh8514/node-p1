@@ -26,8 +26,9 @@ class DBConn {
             }
         }
         catch(err){
-            console.log(err)
-            throw err;
+            console.log("=========================")
+            console.log("DB ERROR :: ",err)
+            console.log("=========================")
         }
         finally{
             if (conn) conn.end();
