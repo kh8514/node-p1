@@ -5,7 +5,7 @@ const pw = document.getElementById("pw")
 const loginBtn = document.querySelector("button")
 
 
-function login(){
+function login(event){
     const req = {
         id : id.value,
         pw : pw.value
