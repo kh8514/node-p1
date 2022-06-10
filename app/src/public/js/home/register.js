@@ -5,6 +5,8 @@ const name = document.getElementById("nm")
 const confirmPw = document.getElementById("confirm-pw")
 const registerBtn = document.querySelector("button")
 
+const link = document.querySelector(".message a")
+
 
 function register(event){
     event.preventDefault()
@@ -37,5 +39,13 @@ function register(event){
         })
 
 }
+    
+    
+function animate() {
+    const form = document.querySelector("form")
+    form.animate({height: "toggle", opacity: "toggle"}, "slow");
+}
 
 registerBtn.addEventListener("click", register); 
+
+link.addEventListener('click', animate)
