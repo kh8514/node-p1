@@ -10,7 +10,13 @@ function login(){
         id : id.value,
         pw : pw.value
     }
-    fetch()
+    fetch("/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify(req)
+    })
 }
 
-loginBtn.addEventListener("click", login);
+loginBtn.addEventListener("click", login); 
