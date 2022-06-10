@@ -1,3 +1,4 @@
+const { response } = require("express")
 const UserStorage = require("./UserStorage")
 
 class User {
@@ -17,13 +18,14 @@ class User {
         return { success: false, msg: "아이디를 확인해주세요"}
     }
 
-    register() {
+    async register() {
         const body = this.body
-        const res = UserStorage.save(this.body)
-        if(res.success) {
-            return {success : true}
+        try {
+            const response = await UserStorage.save(body)
+            return response;
+        } catch(err) {
+            return {success: false, msg:err}
         }
-        return { success: false, msg: " 회원가입 실패"}
     }
 }
 

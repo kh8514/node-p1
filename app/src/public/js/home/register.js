@@ -1,7 +1,7 @@
 "use strict"
 
 const id = document.getElementById("id")
-const name = document.getElementById("name")
+const name = document.getElementById("nm")
 const confirmPw = document.getElementById("confirm-pw")
 const registerBtn = document.querySelector("button")
 
@@ -9,12 +9,11 @@ const registerBtn = document.querySelector("button")
 function register(event){
     event.preventDefault()
 
-    if(pw !== confirmPw) return alert("비밀번호가 일치하지 않습니다.")
-
+    if(pw.value !== confirmPw.value) return alert("비밀번호가 일치하지 않습니다.")
 
     const req = {
         id : id.value,
-        name: name.value,
+        name: nm.value,
         pw : pw.value,
     }
 
