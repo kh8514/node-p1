@@ -8,14 +8,11 @@ class User {
 
     async login() {
         const body = this.body
-        const {id,pw} = await UserStorage.getUserInfo(body.id)
-        if(id) {
-            if(id === body.id && pw === body.pw) {
-                return {success: true}
-            }
-            return { success: false, msg: "패스워드를 확인해주세요"}
-        }
-        return { success: false, msg: "아이디를 확인해주세요"}
+        const data = await UserStorage.getUserInfo(body.id, body.pw)
+       if(data){
+           return {success: true, result:data}
+       }
+       return { success: false, msg: "아이디 및 비밀번호를 확인해주세요."}
     }
 
     async register() {
