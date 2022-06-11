@@ -18,6 +18,7 @@ const accessLogStream = fs.createWriteStream(
 // app setting
 app.set("views", "./src/views")
 app.set("view engine", "ejs")
+app.use("/", home)
 app.use(express.static(`${__dirname}/src/public`))
 app.use(bodyParser.json())
 // URL을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우
@@ -28,7 +29,10 @@ app.use(morgan("dev", {stream: accessLogStream}))
 
 // routing
 const home = require("./src/routes/home")
-app.use("/", home)
+
+// log
+const logger = require('./src/config/logger')
+
 
 
 module.exports = app
